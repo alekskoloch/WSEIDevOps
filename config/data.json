@@ -89,5 +89,17 @@
         {"name": "Ilowiec", "height": 474.00},
         {"name": "Lipka", "height": 425.00},
         {"name": "Skalnica", "height": 412.00}
+    ],
+    "worldHighestMountains": [
+        {"name": "Mount Everest", "height": 8848.86},
+        {"name": "K2", "height": 8611.00},
+        {"name": "Kangchenjunga", "height": 8586.00},
+        {"name": "Lhotse", "height": 8516.00},
+        {"name": "Makalu", "height": 8485.00},
+        {"name": "Cho Oyu", "height": 8188.00},
+        {"name": "Dhaulagiri I", "height": 8167.00},
+        {"name": "Manaslu", "height": 8163.00},
+        {"name": "Nanga Parbat", "height": 8126.00},
+        {"name": "Annapurna I", "height": 8091.00}
     ]
 }
