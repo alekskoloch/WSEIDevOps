@@ -28,16 +28,3 @@ jobs:
     - name: Run tests
       run: |
         docker-compose run test ./build/exampleTest
-
-    - name: Send email notification
-      uses: mohammedhassan/send-email@v1
-      with:
-        smtp-server: smtp.gmail.com
-        smtp-port: 587
-        smtp-username: ${{ secrets.GMAIL_USERNAME }}
-        smtp-password: ${{ secrets.GMAIL_PASSWORD }}
-        from: ${{ secrets.GMAIL_USERNAME }}
-        to: aleks.koloch@gmail.com
-        subject: 'CI/CD Workflow - Build Completed'
-        body: |
-          The CI/CD workflow has completed successfully. All tests have passed and the build was successful.
