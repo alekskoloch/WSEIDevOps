@@ -7,7 +7,7 @@
 
 namespace
 {
-constexpr auto tableName{ "mountains" };
+constexpr auto defaultTableName{ "mountains" };
 constexpr auto exampleIndex{ 0 };
 
 constexpr auto endl{ '\n' };
@@ -31,8 +31,27 @@ constexpr auto answerC{ 'c' };
 constexpr auto answerD{ 'd' };
 } // namespace
 
-int main()
+int main( int argc, char* argv[] )
 {
+    std::string tableName{ defaultTableName };
+    if ( argc > 1 )
+    {
+        std::string argument{ argv[ 1 ] };
+        if ( argument == "worldHighestMountains" )
+        {
+            tableName = "worldHighestMountains";
+        }
+        else if ( argument == "mountains" )
+        {
+            tableName = "mountains";
+        }
+        else
+        {
+            std::cout << "Unknown argument: " << argument << std::endl;
+            throw std::runtime_error( "Unknown table name" );
+        }
+    }
+
     DataLoader dataLoader;
     auto mountains = dataLoader.load( tableName );
 

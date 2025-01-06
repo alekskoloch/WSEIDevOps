@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wseidevops
+    container_name: wseidevops_container
+    stdin_open: true
+    tty: true
+    command: ["./build/WSEIDevOps"]
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: wseidevops
+    container_name: wseidevops_test_container
+    stdin_open: true
+    tty: true
+    command: ["./build/exampleTest"]
