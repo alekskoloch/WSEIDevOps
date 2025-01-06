@@ -1,0 +1,43 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - master
+      - feature/*
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: |
+        docker-compose build  # Zbudowanie obrazu z Docker Compose
+
+    - name: Run the application
+      run: |
+        docker-compose run app ./build/WSEIDevOps
+
+    - name: Run tests
+      run: |
+        docker-compose run test ./build/exampleTest
+
+    - name: Send email notification
+      uses: mohammedhassan/send-email@v1
+      with:
+        smtp-server: smtp.gmail.com
+        smtp-port: 587
+        smtp-username: ${{ secrets.GMAIL_USERNAME }}
+        smtp-password: ${{ secrets.GMAIL_PASSWORD }}
+        from: ${{ secrets.GMAIL_USERNAME }}
+        to: aleks.koloch@gmail.com
+        subject: 'CI/CD Workflow - Build Completed'
+        body: |
+          The CI/CD workflow has completed successfully. All tests have passed and the build was successful.
