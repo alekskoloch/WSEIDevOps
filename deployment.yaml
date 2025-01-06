@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wseidevops-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wseidevops
+  template:
+    metadata:
+      labels:
+        app: wseidevops
+    spec:
+      containers:
+      - name: wseidevops
+        image: wseidevopsimage:latest
+        ports:
+        - containerPort: 8080
